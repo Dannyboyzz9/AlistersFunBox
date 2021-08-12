@@ -1,0 +1,35 @@
+body { 
+    margin: 0; 
+    padding: 0; 
+}
+#map { 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    width: 100%; 
+}
+.InteractiveMap{
+    max-width: 66%; 
+    height: auto;
+}
+.Header{
+    min-height: 15%;
+    background-color: blueviolet;
+}
+.Search{
+    min-height: 15%;
+    background-color: aqua;
+
+}
+.TripInterface{
+    min-height:40%;
+    background-color: aquamarine;
+}
+.TripControls{
+    min-height: 10%;
+    background-color: antiquewhite;
+}
+.FuelCalc{
+    min-height: 20%;
+    background-color: fuchsia;
+}
