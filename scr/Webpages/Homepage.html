@@ -9,76 +9,88 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<title>Trip Planner</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
 	<link rel="stylesheet" href="../../scr/Static/CSS/Styling.css"/>
     <script src="../Static/Javascript/Javascript.js" type="javascript/text"></script>
 	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-	<div class="container-fluid"> <!--Bootstrap container that contains whole of the HTML-->
-		<div class="row"> <!--Header/Navbar Row for title and fast access to buttons-->
-			<div class="Header">
-				<p class="Logo">The Great Trip Planner</p>
-			</div>
+	<header> <!--Header/Navbar Row for title and fast access to buttons-->
+		<div>
+			<p class="Logo">The Great Trip Planner</p>
 		</div>
-		<div class="row"> <!--Main row for content including the map and trip planner-->
-			<div class="col-4"> <!--Trip Planner Console/Interface-->
-				<div class="Search">
-					hello
-					<!--
-						1. Changeable Text tag, first being "start your journy here" then too something like "contiune your jounry"
-						2. Search Bar, have a search a drop down of 4 chooseable destinations, 
-					-->
-				</div>
-				<div class="TripInterface">
-					A test
-					<!--
-						1. Greyed out "Oh youve got nothing here add your starting location"
-						2. When a search has been made and the location is found, create box 
-					-->
-				</div>
-				<div class="TripControls">
-					Trying shit out
-					<!--
-						1.Save Button (as json)
-						2.Calculate Trip Button, Opens field with trip info + map with locations + trip alersts.
-						3.Auto calculating: Total Distance, Driving Time and no of destinations fields
-					-->
-				</div>
-				<div class="FuelCalc">
-					please work
-					<!--
-						1. Fuel Type dropdown menu
-						2. Fuel Economy Input field
-						3. Calculate Fuel Cost (Given Distance from Trip Controls)
-					-->
-				</div>
-				.
-			</div>
-			<div class="col-8"> <!--Interactive Map-->
-				<div id='map' class="InteractiveMap"></div>
-					<script>
-					mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlib3l6eno5IiwiYSI6ImNrcnp6cXZtNTAwMWkydXJ5NjhubXRqeHYifQ.GWer-z8j4EgLpuxK_6ddlQ';
-					const map = new mapboxgl.Map({
-					container: 'map', // container ID
-					style: 'mapbox://styles/mapbox/streets-v11', // style URL
-					center: [-74.5, 40], // starting position [lng, lat]
-					zoom: 9 // starting zoom
-					});
-					</script>
+	</header>
 
+	<Main>
+		<div class="column-left"> <!--Trip Planner Console/Interface-->
+			<div class="Search">
+				hello
+				<!--
+					1. Changeable Text tag, first being "start your journy here" then too something like "contiune your jounry"
+					2. Search Bar, have a search a drop down of 4 chooseable destinations, 
+				-->
 			</div>
+			<div class="TripInterface">
+				A test
+				<!--
+					1. Greyed out "Oh youve got nothing here add your starting location"
+					2. When a search has been made and the location is found, create box 
+				-->
 			</div>
-
+			<div class="TripControls">
+				<div class="..."> <!--Creates new container for the Trip Controls-->
+					<div class="..."> <!--Row for save and calc trip buttons-->
+						<div class="...">
+							<button id="SaveButton" onclick="saveButton_click()">Save</button>
+							<button id="CalcTripButton" onclick="calctripButton_click()">Calculate Trip</button>
+						</div>	
+					</div>
+					<div class="..."> <!--Row for Automatic Info Fields-->
+						<div class="...">
+							<p id="AutoDist">PlaceHolder</p>
+						</div>
+						<div class="...">
+							<p id="AutoDrivingTime">PlaceHolder</p>
+						</div>
+						<div class="...">
+							<p id="AutoDestNo">PlaceHolder</p>
+						</div>
+					</div>
+				</div>
+				
+				
+				<!--
+					1.Save Button (as json)
+					2.Calculate Trip Button, Opens field with trip info + map with locations + trip alersts.
+					3.Auto calculating: Total Distance, Driving Time and no of destinations fields
+				-->
+			</div>
+			<div class="FuelCalc">
+				please work
+				<!--
+					1. Fuel Type dropdown menu
+					2. Fuel Economy Input field
+					3. Calculate Fuel Cost (Given Distance from Trip Controls)
+				-->
+			</div>
+			.
 		</div>
-		<div class="row">
 
+		<div class="column-right"> <!--Interactive Map-->
+			<div id='map' class="InteractiveMap"></div>
+				<script>
+				mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlib3l6eno5IiwiYSI6ImNrcnp6cXZtNTAwMWkydXJ5NjhubXRqeHYifQ.GWer-z8j4EgLpuxK_6ddlQ';
+				const map = new mapboxgl.Map({
+				container: 'map', // container ID
+				style: 'mapbox://styles/mapbox/streets-v11', // style URL
+				center: [-74.5, 40], // starting position [lng, lat]
+				zoom: 9 // starting zoom
+				});
+				</script>
 		</div>
-	</div>
+	</Main>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 </body>
