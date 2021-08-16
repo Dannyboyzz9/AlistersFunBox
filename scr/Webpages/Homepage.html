@@ -26,6 +26,12 @@
 		<div class="column-left"> <!--Trip Planner Console/Interface-->
 			<div class="Search">
 				hello
+
+				<input type="text" id="destSearch" value="PAIN"/>
+				<button id="searchButton" onclick="destSearch_click()">Search</button>
+				
+				<p id="Output"></p>
+
 				<!--
 					1. Changeable Text tag, first being "start your journy here" then too something like "contiune your jounry"
 					2. Search Bar, have a search a drop down of 4 chooseable destinations, 
@@ -39,21 +45,21 @@
 				-->
 			</div>
 			<div class="TripControls">
-				<div class="..."> <!--Creates new container for the Trip Controls-->
-					<div class="..."> <!--Row for save and calc trip buttons-->
-						<div class="...">
-							<button id="SaveButton" onclick="saveButton_click()">Save</button>
-							<button id="CalcTripButton" onclick="calctripButton_click()">Calculate Trip</button>
-						</div>	
+				<div class="ControlContainer"> <!--Creates new container for the Trip Controls-->
+					<div class="ControlRow"> <!--Row for save and calc trip buttons-->
+						<button class="ControlButton" id="SaveButton" onclick="saveButton_click()">Save</button>
+						<button class="ControlButton" id="CalcTripButton" onclick="calctripButton_click()">Calculate Trip</button>
+						<button class="ControlButton" id="resetButton" onclick="resetButton_click()">Reset</button>
+						<button class="ControlButton" id="exitButton" onclick="exitButton_click()">Exit</button>
 					</div>
-					<div class="..."> <!--Row for Automatic Info Fields-->
-						<div class="...">
+					<div class="AutoRow"> <!--Row for Automatic Info Fields-->
+						<div class="AutoCard">
 							<p id="AutoDist">PlaceHolder</p>
 						</div>
-						<div class="...">
+						<div class="AutoCard">
 							<p id="AutoDrivingTime">PlaceHolder</p>
 						</div>
-						<div class="...">
+						<div class="AutoCard">
 							<p id="AutoDestNo">PlaceHolder</p>
 						</div>
 					</div>

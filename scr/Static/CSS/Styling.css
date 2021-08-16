@@ -1,3 +1,4 @@
+/*Generic Css for the Whole Document*/
 * {
     box-sizing: border-box;
   }
@@ -6,9 +7,8 @@ body {
     padding: 0; 
 
 }
-header{
-    background-color: blueviolet
-}
+
+/*CSS for the seperating columns*/
 
 [class*="column-"] {
     float: left;
@@ -23,16 +23,38 @@ header{
     flex: 0 0 auto;
     width: 66.66666667%;
 }
+
+/* CSS for the Trip Planner Controls*/
+.ControlContainer{
+
+}
+.ControlRow{
+
+}
+.ControlButton{
+
+}
+/* CSS for Automatic Infomation fields*/
+.AutoCard{
+
+}
+.AutoRow{
+
+}
+/* CSS for the Rightside map */
+.InteractiveMap{
+    max-width: 66.66666667%; 
+    height: auto;
+}
 #map { 
     position: absolute; 
     top: 0; 
     bottom: 0; 
     width: 100%; 
 }
-
-.InteractiveMap{
-    max-width: 66.66666667%; 
-    height: auto;
+/* CSS for each section/row of the */
+header{
+    background-color: blueviolet
 }
 .Search{
     min-height: 15%;
