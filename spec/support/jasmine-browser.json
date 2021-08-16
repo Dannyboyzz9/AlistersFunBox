@@ -13,6 +13,6 @@
   "random": true,
   "stopSpecOnExpectationFailure": false,
   "browser": {
-    "name": "firefox"
+    "name": "edge"
   }
 }

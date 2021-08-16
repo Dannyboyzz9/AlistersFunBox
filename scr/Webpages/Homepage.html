@@ -10,10 +10,11 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trip Planner</title>
+
+	<script src="/scr/scripts/Javascript.js" type="javascript/text"></script>
 	<link rel="stylesheet" href="../../scr/Static/CSS/Styling.css"/>
-    <script src="../Javascript/Javascript.js" type="javascript/text"></script>
-	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
 </head>
 <body>
 	<header> <!--Header/Navbar Row for title and fast access to buttons-->
@@ -27,6 +28,8 @@
 			<div class="Search">
 				
 				<input type="text" id="destSearch" value="PAIN" />
+				<!--Add code to have a dropdown list of possible locations-->
+
 				<button id="searchButton" onclick="destSearch_click()">Search</button>
 
 				<p id="Output">TEST</p>
@@ -51,15 +54,15 @@
 						<button class="ControlButton" id="resetButton" onclick="resetButton_click()">Reset</button>
 						<button class="ControlButton" id="exitButton" onclick="exitButton_click()">Exit</button>
 					</div>
-					<div class="AutoRow"> <!--Row for Automatic Info Fields-->
-						<div class="AutoCard">
-							<p id="AutoDist">PlaceHolder</p>
+					<div class="CalcRow"> <!--Row for Automatic Info Fields-->
+						<div class="CalcCard">
+							<p id="Dist">PlaceHolder</p>
 						</div>
-						<div class="AutoCard">
-							<p id="AutoDrivingTime">PlaceHolder</p>
+						<div class="CalcCard">
+							<p id="DrivingTime">PlaceHolder</p>
 						</div>
-						<div class="AutoCard">
-							<p id="AutoDestNo">PlaceHolder</p>
+						<div class="CalcCard">
+							<p id="Num of Destinations">PlaceHolder</p>
 						</div>
 					</div>
 				</div>
@@ -95,8 +98,5 @@
 				</script>
 		</div>
 	</Main>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
 </body>
 </html>
