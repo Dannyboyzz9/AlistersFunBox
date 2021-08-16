@@ -26,20 +26,20 @@ body {
 
 /* CSS for the Trip Planner Controls*/
 .ControlContainer{
-
+    color: aliceblue;
 }
 .ControlRow{
-
+    color: aliceblue;
 }
 .ControlButton{
-
+    color: aliceblue;
 }
 /* CSS for Automatic Infomation fields*/
 .AutoCard{
-
+    color: aliceblue;
 }
 .AutoRow{
-
+    color: aliceblue;
 }
 /* CSS for the Rightside map */
 .InteractiveMap{
