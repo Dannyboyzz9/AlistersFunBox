@@ -11,25 +11,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trip Planner</title>
 
-	<script src="/scr/scripts/Javascript.js" type="javascript/text"></script>
-	<link rel="stylesheet" href="../../scr/Static/CSS/Styling.css"/>
+	<script src='/scr/scripts/javascript.js'></script>
+	<link rel="stylesheet" href="../../scr/Static/CSS/styling.css"/>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
 	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
 </head>
 <body>
 	<header> <!--Header/Navbar Row for title and fast access to buttons-->
 		<div>
-			<p class="Logo">The Great Trip Planner</p>
+			<p class="logo">The Great Trip Planner</p>
 		</div>
 	</header>
 
 	<Main>
-		<div class="column-left"> <!--Trip Planner Console/Interface-->
-			<div class="Search">
+		<div id="interface-area"> <!--Trip Planner Console/Interface-->
+			<div id="search">
 				
 				<input type="text" id="destSearch" value="PAIN" />
 				<!--Add code to have a dropdown list of possible locations-->
-
+			
 				<button id="searchButton" onclick="destSearch_click()">Search</button>
 
 				<p id="Output">TEST</p>
@@ -39,22 +39,22 @@
 					2. Search Bar, have a search a drop down of 4 chooseable destinations, 
 				-->
 			</div>
-			<div class="TripInterface">
+			<div id="trip-interface">
 				A test
 				<!--
 					1. Greyed out "Oh youve got nothing here add your starting location"
 					2. When a search has been made and the location is found, create box 
 				-->
 			</div>
-			<div class="TripControls">
-				<div class="ControlContainer"> <!--Creates new container for the Trip Controls-->
-					<div class="ControlRow"> <!--Row for save and calc trip buttons-->
+			<div id="trip-controls">
+				<div id="control-container"> <!--Creates new container for the Trip Controls-->
+					<div class="control-row"> <!--Row for save and calc trip buttons-->
 						<button class="ControlButton" id="SaveButton" onclick="saveButton_click()">Save</button>
 						<button class="ControlButton" id="CalcTripButton" onclick="calctripButton_click()">Calculate Trip</button>
 						<button class="ControlButton" id="resetButton" onclick="resetButton_click()">Reset</button>
 						<button class="ControlButton" id="exitButton" onclick="exitButton_click()">Exit</button>
 					</div>
-					<div class="CalcRow"> <!--Row for Automatic Info Fields-->
+					<div class="control-row"> <!--Row for Automatic Info Fields-->
 						<div class="CalcCard">
 							<p id="Dist">PlaceHolder</p>
 						</div>
@@ -74,7 +74,7 @@
 					3.Auto calculating: Total Distance, Driving Time and no of destinations fields
 				-->
 			</div>
-			<div class="FuelCalc">
+			<div id="fuel-calc">
 				please work
 				<!--
 					1. Fuel Type dropdown menu
@@ -85,7 +85,7 @@
 			.
 		</div>
 
-		<div class="column-right"> <!--Interactive Map-->
+		<div id="interactive-map"> <!--Interactive Map-->
 			<div id='map' class="InteractiveMap"></div>
 				<script>
 				mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlib3l6eno5IiwiYSI6ImNrcnp6cXZtNTAwMWkydXJ5NjhubXRqeHYifQ.GWer-z8j4EgLpuxK_6ddlQ';
