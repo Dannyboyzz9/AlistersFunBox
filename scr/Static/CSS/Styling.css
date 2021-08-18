@@ -10,36 +10,33 @@ body {
 
 /*CSS for the seperating columns*/
 
-[class*="column-"] {
-    float: left;
-    padding: 0px;
-}
-.column-left{
+#interface-area{
     flex: 0 0 auto;
     width: 33.33333333%;
     min-width: 33.333333%;
+    float: left;
+    padding: 0px
 }
-.column-right{
+#interactive-map{
     flex: 0 0 auto;
     width: 66.66666667%;
+    float: left;
+    padding: 0px
 }
 
 /* CSS for the Trip Planner Controls*/
-.ControlContainer{
+#control-container{
     color: aliceblue;
 }
-.ControlRow{
+.control-row{
     color: aliceblue;
 }
 .ControlButton{
     color: aliceblue;
 }
 /* CSS for Automatic Infomation fields*/
-.AutoCard{
-    color: aliceblue;
-}
-.AutoRow{
-    color: aliceblue;
+.CalcCard{
+    color: aqua;
 }
 /* CSS for the Rightside map */
 .InteractiveMap{
@@ -56,20 +53,20 @@ body {
 header{
     background-color: blueviolet
 }
-.Search{
+#Search{
     min-height: 15%;
     background-color: aqua;
 
 }
-.TripInterface{
+#trip-interface{
     min-height:40%;
     background-color: aquamarine;
 }
-.TripControls{
+#trip-controls{
     min-height: 10%;
     background-color: antiquewhite;
 }
-.FuelCalc{
+#fuel-calc{
     min-height: 20%;
     background-color: fuchsia;
 }
