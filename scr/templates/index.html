@@ -11,8 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trip Planner</title>
 
-	<script src="java.js"></script>
-	<link rel="stylesheet" href="/scr/static/css/styling.css"/>
+	<script src="../scripts/java.js"></script>
+	<script src="../scripts/search.js"></script>
+	<link rel="stylesheet" href="../static/css/styling.css"/>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
 	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
 </head>
@@ -23,46 +24,48 @@
 		</div>
 	</header>
 
+	<!--Main container where all content and useable features and tools are located-->
 	<Main>
-		<div id="interface-area"> <!--Trip Planner Console/Interface-->
-			<div id="search">
-				
-				<input type="text" id="destSearch" value="PAIN" />
-				<!--Add code to have a dropdown list of possible locations-->
-			
-				<button id="searchButton" onclick="destSearch_click()">Search</button>
+		<!--Trip Planner Console/Interface-->
+		<div id="interface-area"> 
+			<!--Destination search container-->
+			<div id="search-background">
 
-				<p id="Output">TEST</p>
+				<!--Search Bar that gives an dropdown list of chooseable destinations-->
+				<input value="Search for a destination here" id="search" autocomplete="off" onkeyup="searchTOWN(this);">
+				<!--Button which adds searched destination to literniary-->
+				<button id="add-dest" onclick="">Add To List</button>
 
-				<!--
-					1. Changeable Text tag, first being "start your journy here" then too something like "contiune your jounry"
-					2. Search Bar, have a search a drop down of 4 chooseable destinations, 
-				-->
 			</div>
+			<!--Itenary list container-->
 			<div id="trip-interface">
-				A test
-				<!--
-					1. Greyed out "Oh youve got nothing here add your starting location"
-					2. When a search has been made and the location is found, create box 
-				-->
+
+				<!--Defult containers and text for when no destinations have yet been added-->
+				<div id="empty-dest-container">
+					<p id="empty-dest-text">Oh it looks like you havent added any destinations to your list</p>
+				</div>
+				
+				<!--Invisable placeholder for when a location is added JS will insert html with appropraite class,id names and the required infomation-->
+				<p id="location-1"></p>
 			</div>
+
 			<div id="trip-controls">
 				<div id="control-container"> <!--Creates new container for the Trip Controls-->
 					<div class="control-row"> <!--Row for save and calc trip buttons-->
-						<button class="ControlButton" id="SaveButton" onclick="saveButton_click()">Save</button>
-						<button class="ControlButton" id="CalcTripButton" onclick="calctripButton_click()">Calculate Trip</button>
-						<button class="ControlButton" id="resetButton" onclick="resetButton_click()">Reset</button>
-						<button class="ControlButton" id="exitButton" onclick="exitButton_click()">Exit</button>
+						<button class="control-button" id="save-button" onclick="saveButton_click()">Save</button>
+						<button class="control-button" id="calc-trip-button" onclick="calctripButton_click()">Calculate Trip</button>
+						<button class="control-button" id="reset-button" onclick="resetButton_click()">Reset</button>
+						<button class="control-button" id="exit-button" onclick="exitButton_click()">Exit</button>
 					</div>
 					<div class="control-row"> <!--Row for Automatic Info Fields-->
-						<div class="CalcCard">
-							<p id="Dist">PlaceHolder</p>
+						<div class="calc-card">
+							<p id="dist">PlaceHolder</p>
 						</div>
-						<div class="CalcCard">
-							<p id="DrivingTime">PlaceHolder</p>
+						<div class="calc-card">
+							<p id="driving-time">PlaceHolder</p>
 						</div>
-						<div class="CalcCard">
-							<p id="Num of Destinations">PlaceHolder</p>
+						<div class="calc-card">
+							<p id="no-destinations">PlaceHolder</p>
 						</div>
 					</div>
 				</div>
@@ -75,7 +78,23 @@
 				-->
 			</div>
 			<div id="fuel-calc">
-				please work
+				<fieldset>
+					<legend>Fuel Calculator</legend>
+					<p><label for="fuel-econ">Fuel Economy:</label><input id="fuel-econ" type="number" value="9.50"></p>
+					<p><label for="fuel-type">Fuel Type:</label>
+						<select id="fuel-type" name="fuel-type">
+							<option value="Petrol 91">Petrol 91</option>
+							<option value="Petrol 97">Petrol 97</option>
+							<option value="Diesel">Diesel</option>
+							<option value="Electric">Electric</option>
+						</select>
+					</p>
+					<p><label for="fuel-dist">Distance Travelled:</label><input id="fuel-dist" type="number" value="0"></p>
+				</fieldset>
+				<button id="calc-button" onclick="fuelCost_click()"">FIND YOUR COST</button>
+				<p id="fuel-result">DEFULT</p>
+
+
 				<!--
 					1. Fuel Type dropdown menu
 					2. Fuel Economy Input field
@@ -86,7 +105,7 @@
 		</div>
 
 		<div id="interactive-map"> <!--Interactive Map-->
-			<div id='map' class="InteractiveMap"></div>
+			<div id='map'></div>
 				<script>
 				mapboxgl.accessToken = 'pk.eyJ1IjoiZGFubnlib3l6eno5IiwiYSI6ImNrcnp6cXZtNTAwMWkydXJ5NjhubXRqeHYifQ.GWer-z8j4EgLpuxK_6ddlQ';
 				const map = new mapboxgl.Map({

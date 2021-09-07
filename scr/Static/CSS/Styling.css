@@ -1,16 +1,21 @@
-/*Generic Css for the Whole Document*/
-* {
-    box-sizing: border-box;
+/* Generic CSS */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, a, article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+    /* Resets CSS code to ignore browser differences */
+      font: inherit;
+      vertical-align: baseline;
+      margin: 0;
+      padding: 0;
+      border: 0;
   }
-body { 
-    margin: 0; 
-    padding: 0; 
-
-}
+   
+  * {
+    /* Padding and borders will be subtracted from the content box width, not added to it. */
+      box-sizing: border-box;
+  }
 
 /*CSS for the seperating columns*/
-
 #interface-area{
+    /* Allows the interface area to be both flexable and to maintian a constent 33% */
     flex: 0 0 auto;
     width: 33.33333333%;
     min-width: 33.333333%;
@@ -24,49 +29,122 @@ body {
     padding: 0px
 }
 
+/** Search Bar CSS **/
+
+#selector {
+    position: fixed;
+    margin-top: 2px;
+    max-height: 150px;
+    overflow: auto;
+  }
+  
+  #selector button {
+    padding: 10px 20px; 
+    border: none;
+    display: block;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+  
+  #selector button:hover {
+    background-color: #f2f2f2;
+  }
+
+/** Destination List CSS **/
+#empty-dest-container{
+    padding: 15px 10px;
+    border-color: black;
+    background-color: gainsboro;
+}
+
+#empty-dest-text{
+    text-align: center;
+    padding: 10%;
+    color: grey;
+}
+
+/*Fieldset css being used for Fuel Calculator*/
+fieldset {
+	padding-top : 0.5em;
+	padding-bottom : 1em;
+}
+
+fieldset legend {
+	margin-left: 2em;
+	padding-left: 0.5em;
+	padding-right : 0.5em;
+}
+
+fieldset label {
+	margin-right: 1em;
+	text-align: right;
+}
+
+/* CSS for location list */
+
+[class*="location-"] {
+    margin: 0.5rem;
+    padding: 15px;
+    border: 1px solid black;
+}
+
+.loc-delete{
+    float: right;
+}
+
 /* CSS for the Trip Planner Controls*/
 #control-container{
-    color: aliceblue;
+    align-items: center;
 }
 .control-row{
-    color: aliceblue;
+    align-content: center;
 }
-.ControlButton{
-    color: aliceblue;
+.control-button{
+    color: black;
 }
 /* CSS for Automatic Infomation fields*/
-.CalcCard{
+.calc-card{
     color: aqua;
+    float: left;
+    padding: 0.25rem;
 }
 /* CSS for the Rightside map */
-.InteractiveMap{
-    max-width: 66.66666667%; 
-    height: auto;
-}
+
 #map { 
     position: absolute; 
     top: 0; 
     bottom: 0; 
-    width: 100%; 
+    width: 66.6666667%; 
 }
+
 /* CSS for each section/row of the */
 header{
+    text-align: justify;
+    padding: 2em;
     background-color: blueviolet
 }
-#Search{
-    min-height: 15%;
-    background-color: aqua;
+#search-background{
+    margin-left : 2em;
+	margin-right : 2em;
+	margin-top : 1em;
 
 }
 #trip-interface{
-    min-height:40%;
-    background-color: aquamarine;
+    margin-left : 2em;
+	margin-right : 2em;
+	margin-top : 1em;
+    
 }
 #trip-controls{
-    min-height: 10%;
-    background-color: antiquewhite;
+    margin-left : 2em;
+	margin-right : 2em;
+	margin-top : 1em;
+    
 }
 #fuel-calc{
-    min-height: 20%;
-    background-color: fuchsia;
+    float: left;
+    margin-left : 2em;
+	margin-right : 2em;
+	margin-top : 1em;
 }
