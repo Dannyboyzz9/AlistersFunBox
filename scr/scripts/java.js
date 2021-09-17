@@ -1,61 +1,41 @@
 
 /*Planning Space for code
+JSON code:
 
-Search code:
+???
 
-JSON saving code:
+Distance Calculation and trip info Code:
+   
+????
 
-JSON deleting code:
+*/
 
-Loading JSON Code:
-
-[N]_delete code:
-
-[N]_reorder code:
-
-Distance Calculation Code:
-    when calculate button is clicked then 
-    function calcButton_click(){
-        
-        IDEA:
-        n=1
-        FUNCTION BEGIN{
-            Get Json code
-            loop{
-                set a=location n -- get location n=1 on first run through then n=2 on second run
-                n=n+1
-                set b=location n -- get location n=2 on first run through then n=3 on second run
-
-                set distance = distance between a+b
-                set totaldistance = totaldistance + distance
-                n=n
-
-                stopping code 
-            }
-        calculate driving est driving time (for simplisity sake the speed 90km/h will be used for time calculations)
-        set DrivingTimeHours = totaldistance / speed (90) 
-        set DrivingTimeMins = DrivingTimeHours (only after the .xxx) * 60
-        set DrvingTimeSec = DrivingTimeMins (only after the .xxx) * 60
-        set TotalDrivingTime = "DrivingTimeHours : DrivingTimeMins : DrvingTimeSec"
-
-        output totatldistance
-        output TotalDrivingTime
-        }
-    }
-
-
-
-Fuel Calc code: THIS WORKS
-
+/*Fuel Calculation Code*/
     function fuelCost_click(){
+        /*Gets fuel economy info from webpage */
         let econ = document.getElementById("fuel-econ").value;
+        /*Gets distance travelled info from the webpage */
         let dist = document.getElementById("fuel-dist").value;
-        let price = 2; ***Needs to be more specific on price, as in price changes depending on fuel
+       
+        /*If, else if, else stament to set fuel price depending on what fuel type is selected*/
+        let fuelType = document.getElementById("fuel-type").value;
+        console.log(fuelType);
 
-        let cost = ((dist/100) * econ) * price
+        /*Sets the value of the varible 'price' to 0 */
+        var price = 0
 
-        document.getElementById("fuel-result").innerHTML = cost; <-- this is the output
+        /*If statment determining what the price value should be given a fuel type*/
+        if (fuelType = 1){
+            /*If the fuelType value is = 1 (petrol-91) the price varible is equal to '2' */
+            var price = 2
+        } 
+        /* need more stuff for other fuel types */
+
+        console.log(price);
+
+        /*Total Fuel cost calculation Code*/
+        let cost = ((dist/100) * econ) * price;
+
+        /*Outputs the fuel cost to the HTML*/
+        document.getElementById("fuel-result").innerHTML = cost;
     }
-
-
-*/ 
