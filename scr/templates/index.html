@@ -13,6 +13,7 @@
 
 	<script src="../scripts/java.js"></script>
 	<script src="../scripts/search.js"></script>
+	<script src="../scripts/setup.js"></script>
 	<link rel="stylesheet" href="../static/css/styling.css"/>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
 	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
@@ -32,18 +33,22 @@
 			<div id="search-background">
 
 				<!--Search Bar that gives an dropdown list of chooseable destinations-->
-				<input value="Search for a destination here" id="search" autocomplete="off" onkeyup="searchTOWN(this);">
+				<input id="search" autocomplete="off" onkeyup="searchTOWN(this);">
 				<!--Button which adds searched destination to literniary-->
-				<button id="add-dest" onclick="">Add To List</button>
+				<button id="add-dest">Add To List</button>
 
 			</div>
+
+
 			<!--Itenary list container-->
 			<div id="trip-interface">
-
-				<!--Defult containers and text for when no destinations have yet been added-->
-				<div id="empty-dest-container">
-					<p id="empty-dest-text">Oh it looks like you havent added any destinations to your list</p>
-				</div>
+				<p>Test</p>
+					<p><label for="product">New purchase:</label><input id="product_purchased" type="text" value=""><button id="add_button">Add To List</button></p>
+					<div id="products_purchased_list">
+						<h3>Purchase List</h3>
+						<ul id="purchase_list">
+						</ul>								
+					</div>
 				
 				<!--Invisable placeholder for when a location is added JS will insert html with appropraite class,id names and the required infomation-->
 				<p id="location-1"></p>
@@ -52,10 +57,11 @@
 			<div id="trip-controls">
 				<div id="control-container"> <!--Creates new container for the Trip Controls-->
 					<div class="control-row"> <!--Row for save and calc trip buttons-->
-						<button class="control-button" id="save-button" onclick="saveButton_click()">Save</button>
-						<button class="control-button" id="calc-trip-button" onclick="calctripButton_click()">Calculate Trip</button>
-						<button class="control-button" id="reset-button" onclick="resetButton_click()">Reset</button>
-						<button class="control-button" id="exit-button" onclick="exitButton_click()">Exit</button>
+						<button class="control-button" id="remove_button">Remove From List</button>
+						<button class="control-button" id="save-button">Save</button>
+						<button class="control-button" id="calc-trip-button">Calculate Trip</button>
+						<button class="control-button" id="reset">Reset</button> <!--Reset button which resets the destination lists-->
+						<button class="control-button" id="exit">Exit</button>
 					</div>
 					<div class="control-row"> <!--Row for Automatic Info Fields-->
 						<div class="calc-card">
@@ -84,7 +90,7 @@
 					<p><label for="fuel-type">Fuel Type:</label>
 						<select id="fuel-type" name="fuel-type">
 							<option value="1">Petrol 91</option>
-							<option value="2">Petrol 97</option>
+							<option value="2">Petrol 95/96</option>
 							<option value="3">Diesel</option>
 							<option value="4">Electric</option>
 						</select>
@@ -102,8 +108,7 @@
 				-->
 			</div>
 			.
-		</div>
-
+		</div> 
 		<div id="interactive-map"> <!--Interactive Map-->
 			<div id='map'></div>
 				<script>

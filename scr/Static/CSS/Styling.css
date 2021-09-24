@@ -52,7 +52,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, f
   }
 
 /** Destination List CSS **/
-#empty-dest-container{
+#dest-container{
     padding: 15px 10px;
     border-color: black;
     background-color: gainsboro;
@@ -147,4 +147,8 @@ header{
     margin-left : 2em;
 	margin-right : 2em;
 	margin-top : 1em;
+}
+
+li.selected {
+	color : #ff0055;
 }

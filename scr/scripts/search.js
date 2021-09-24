@@ -29,20 +29,19 @@ const town = {
 
 function searchTOWN(elem) {
 	let selector = document.getElementById("selector");
-	// Check if input is empty
+	// Checks if search bar is empty
 	if (elem.value.trim() !== "") {
-		elem.classList.add("dropdown"); // Add dropdown class (for the CSS border-radius)
-		// If the selector div element does not exist, create it
+		// Creates the selector div element as it does not yet exist.
 		if (selector == null) {
 			selector = document.createElement("div");
 			selector.id = "selector";
 			elem.parentNode.appendChild(selector);
-			// Position it below the input element
+			// Position the dropdown menu below the input element
 			selector.style.left = elem.getBoundingClientRect().left + "px";
 			selector.style.top = elem.getBoundingClientRect().bottom + "px";
 			selector.style.width = elem.getBoundingClientRect().width + "px";
 		}
-		// Clear everything before new search
+		// Clears everything before new search
 		selector.innerHTML = "";
 		// Variable if result is empty
 		let empty = true;
@@ -61,7 +60,6 @@ function searchTOWN(elem) {
 		// If result is empty, display a disabled button with text
 		if (empty == true) {
 			let opt = document.createElement("button");
-			opt.disabled = true;
 			opt.innerHTML = "No results";
 			selector.appendChild(opt);
 		}
