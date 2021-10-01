@@ -103,12 +103,7 @@ fieldset label {
 .control-button{
     color: black;
 }
-/* CSS for Automatic Infomation fields*/
-.calc-card{
-    color: aqua;
-    float: left;
-    padding: 0.25rem;
-}
+
 /* CSS for the Rightside map */
 
 #map { 

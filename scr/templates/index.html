@@ -33,20 +33,19 @@
 			<div id="search-background">
 
 				<!--Search Bar that gives an dropdown list of chooseable destinations-->
-				<input id="search" autocomplete="off" onkeyup="searchTOWN(this);">
+				<input id="search" autocomplete="off">
 				<!--Button which adds searched destination to literniary-->
-				<button id="add-dest">Add To List</button>
+				<button id="add-button">Add To List</button>
 
 			</div>
 
+			<button onclick="destDistCalc()">YESSSSSSS</button>
 
 			<!--Itenary list container-->
 			<div id="trip-interface">
-				<p>Test</p>
-					<p><label for="product">New purchase:</label><input id="product_purchased" type="text" value=""><button id="add_button">Add To List</button></p>
 					<div id="products_purchased_list">
-						<h3>Purchase List</h3>
-						<ul id="purchase_list">
+						<p>Destination List</p>
+						<ul id="destination-list">
 						</ul>								
 					</div>
 				
@@ -57,21 +56,17 @@
 			<div id="trip-controls">
 				<div id="control-container"> <!--Creates new container for the Trip Controls-->
 					<div class="control-row"> <!--Row for save and calc trip buttons-->
-						<button class="control-button" id="remove_button">Remove From List</button>
-						<button class="control-button" id="save-button">Save</button>
+						<button class="control-button" id="remove-button">Remove From List</button>
+						<button class="control-button" id="save-button">Save Trip</button>
+						<button class="control-button" id="load-button">Load Trip</button>
 						<button class="control-button" id="calc-trip-button">Calculate Trip</button>
 						<button class="control-button" id="reset">Reset</button> <!--Reset button which resets the destination lists-->
 						<button class="control-button" id="exit">Exit</button>
 					</div>
+
 					<div class="control-row"> <!--Row for Automatic Info Fields-->
-						<div class="calc-card">
-							<p id="dist">PlaceHolder</p>
-						</div>
-						<div class="calc-card">
-							<p id="driving-time">PlaceHolder</p>
-						</div>
-						<div class="calc-card">
-							<p id="no-destinations">PlaceHolder</p>
+						<div>
+							<p>The Total Trip Distance is:</p><p id="trip-distance"></p>
 						</div>
 					</div>
 				</div>
@@ -84,8 +79,6 @@
 				-->
 			</div>
 			<div id="fuel-calc">
-				<fieldset>
-					<legend>Fuel Calculator</legend>
 					<p><label for="fuel-econ">Fuel Economy:</label><input id="fuel-econ" type="number" value="9.50"></p>
 					<p><label for="fuel-type">Fuel Type:</label>
 						<select id="fuel-type" name="fuel-type">
@@ -96,9 +89,8 @@
 						</select>
 					</p>
 					<p><label for="fuel-dist">Distance Travelled:</label><input id="fuel-dist" type="number" value="0"></p>
-				</fieldset>
 				<button id="calc-button" onclick="fuelCost_click()">FIND YOUR COST</button>
-				<p id="fuel-result">DEFULT</p>
+				<p>Fuel Cost</p><p id="fuel-result"></p>
 
 
 				<!--
