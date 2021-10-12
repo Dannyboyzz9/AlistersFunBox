@@ -46,8 +46,7 @@
 					<div>
 						<p>Destination List</p>
 						<ul id="destination-list">
-						</ul>	
-						<ul><li id="final-dest"></li></ul>							
+						</ul>								
 					</div>
 			</div>
 
@@ -59,7 +58,6 @@
 						<button class="control-button" id="load-button">Load Trip</button>
 						<button class="control-button" id="reset">Reset</button> <!--Reset button which resets the destination lists-->
 						<button class="control-button" id="exit">Exit</button>
-						<button class="control-button" onclick="DEBUG()" id="DEBUG">DEBUG BUTTON</button>
 					</div>
 
 					<div class="control-row"> <!--Row for Automatic Info Fields-->
@@ -87,8 +85,8 @@
 						</select>
 					</p>
 					<p><label for="fuel-dist">Distance Travelled:</label><input id="fuel-dist" type="number" value="0"></p>
-				<button id="calc-button" onclick="fuelCost_click()">FIND YOUR COST</button>
-				<p>Fuel Cost</p><p id="fuel-result"></p>
+				<button id="calc-button">FIND YOUR COST</button>
+				<p>Fuel Cost:</p><p id="fuel-result"></p>
 
 
 				<!--

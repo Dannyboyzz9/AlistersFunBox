@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("remove-button").addEventListener('click',function() {removeDest(getElement("selectDest"));});
         document.getElementById("remove-button").addEventListener('click',function() {finalDest();});
 
+        document.getElementById("calc-button").addEventListener('click',function() {fuelCost_click();});
     }
 
     function resetUI() {
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("destination-list").innerHTML = ""
         document.getElementById("trip-distance").innerHTML = ""
         destList = []
+        document.getElementById("fuel-dist").setAttribute('value', '0')
     }
 
     function getElement(elementId) {

@@ -4,6 +4,7 @@ function addDest(destAdded) {
 	let newDestText = document.createTextNode(destAdded)
 	newDest.appendChild(newDestText)
 	document.getElementById("destination-list").appendChild(newDest)
+
     destList.push(destAdded)
     finalDest(destAdded)	
 }
@@ -13,6 +14,7 @@ function removeDest(destinationRemove) {
 	if (destinationRemove != null) {
 		destinationRemove.parentNode.removeChild(destinationRemove)
 	}
+    
 }
 
 //function adds the finishing location for the trip (ie the starting location)
@@ -22,8 +24,6 @@ function finalDest(destAdded) {
     destList.pop()
     destList.push(destAdded)
     destList.push(startingLoc)
-    document.getElementById("final-dest").innerHTML = startingLoc
-    
 }
 
 //Function which selects a list item and sets css to indicate that it has been selected
@@ -55,8 +55,22 @@ function saveTrip(){
 function loadTrip(){
     storedTrip = localStorage.getItem("trip")
     tripPlaces = JSON.parse(storedTrip)
+    const tripList = tripPlaces
+    let tripLength = tripList.length
+    i=0
+    while (tripLength > i) {    
+        let destAdded = tripList[i]
+        destList.push(destAdded) 
+        let newDest = document.createElement("LI")
+	    let newDestText = document.createTextNode(destAdded)
+	    newDest.appendChild(newDestText)
+	    document.getElementById("destination-list").appendChild(newDest)
+        console.log(i,destAdded,destList)
+        i=i+1
+        destDistCalc()
+    }   
 }
-    
+
 //Distance Calculation and trip info Code:
 let townList = ["Alexandra","Blenheim","Christchurch","Collingwood","Cromwell","Dunedin","Franz Josef","Geraldine","Gore","Greymouth","Haast","Invercargill","Kaikoura","Lake Tekapo","Milford Sound","Mount Cook","Murchison","Nelson","Oamaru","Picton","Queenstown","Te Anau","Timaru","Twizel","Wanaka","Westport"]
 
@@ -91,10 +105,6 @@ let townDistance = [
 
 let destList = []
 
-function DEBUG(){
-    console.log(destList)
-    console.log(startingLoc,destAdded)
-}
 
 //The following Function is the distance Calculation Code
 function destDistCalc() {
@@ -109,6 +119,7 @@ function destDistCalc() {
         console.log(traveled, destList)
         document.getElementById("trip-distance").innerHTML = traveled + " km"
     }
+    document.getElementById("fuel-dist").setAttribute('value', traveled)
 }
 
 /*Fuel Calculation Code*/
