@@ -39,18 +39,16 @@
 
 			</div>
 
-			<button onclick="destDistCalc()">YESSSSSSS</button>
+			
 
 			<!--Itenary list container-->
 			<div id="trip-interface">
-					<div id="products_purchased_list">
+					<div>
 						<p>Destination List</p>
 						<ul id="destination-list">
-						</ul>								
+						</ul>	
+						<ul><li id="final-dest"></li></ul>							
 					</div>
-				
-				<!--Invisable placeholder for when a location is added JS will insert html with appropraite class,id names and the required infomation-->
-				<p id="location-1"></p>
 			</div>
 
 			<div id="trip-controls">
@@ -59,9 +57,9 @@
 						<button class="control-button" id="remove-button">Remove From List</button>
 						<button class="control-button" id="save-button">Save Trip</button>
 						<button class="control-button" id="load-button">Load Trip</button>
-						<button class="control-button" id="calc-trip-button">Calculate Trip</button>
 						<button class="control-button" id="reset">Reset</button> <!--Reset button which resets the destination lists-->
 						<button class="control-button" id="exit">Exit</button>
+						<button class="control-button" onclick="DEBUG()" id="DEBUG">DEBUG BUTTON</button>
 					</div>
 
 					<div class="control-row"> <!--Row for Automatic Info Fields-->

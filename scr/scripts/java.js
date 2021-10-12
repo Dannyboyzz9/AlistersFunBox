@@ -3,7 +3,9 @@ function addDest(destAdded) {
 	let newDest = document.createElement("LI")
 	let newDestText = document.createTextNode(destAdded)
 	newDest.appendChild(newDestText)
-	document.getElementById("destination-list").appendChild(newDest)	
+	document.getElementById("destination-list").appendChild(newDest)
+    destList.push(destAdded)
+    finalDest(destAdded)	
 }
 
 // Function to remove a destination from the list.
@@ -11,6 +13,17 @@ function removeDest(destinationRemove) {
 	if (destinationRemove != null) {
 		destinationRemove.parentNode.removeChild(destinationRemove)
 	}
+}
+
+//function adds the finishing location for the trip (ie the starting location)
+function finalDest(destAdded) {
+    let startingLoc = destList[0]
+    destList.pop()
+    destList.pop()
+    destList.push(destAdded)
+    destList.push(startingLoc)
+    document.getElementById("final-dest").innerHTML = startingLoc
+    
 }
 
 //Function which selects a list item and sets css to indicate that it has been selected
@@ -32,17 +45,6 @@ function exit(){
     resetUI()
 }
 
-//Get List of places in order in an Array
-//list of array must be destList = [place1, place2]
-
-
-
-
-
-
-
-
-
 //Function which saves trip list array to local storage
 function saveTrip(){
     destListString=JSON.stringify(destList)
@@ -50,7 +52,7 @@ function saveTrip(){
 }
 
 //Function which retreves the trip list array from local storage
-function getTrip(){
+function loadTrip(){
     storedTrip = localStorage.getItem("trip")
     tripPlaces = JSON.parse(storedTrip)
 }
@@ -87,7 +89,12 @@ let townDistance = [
     [761,254,333,320,639,695,277,432,804,101,437,869,340,559,951,664,101,226,580,288,664,830,497,617,558,0]
 ]
 
-let destList = ["Blenheim", "Cromwell", "Gore","Blenheim","Greymouth"]
+let destList = []
+
+function DEBUG(){
+    console.log(destList)
+    console.log(startingLoc,destAdded)
+}
 
 //The following Function is the distance Calculation Code
 function destDistCalc() {
@@ -99,16 +106,10 @@ function destDistCalc() {
         distance = townDistance[Number(destA)]
         traveled += distance[Number(destB)]
         i+=1
-        console.log(traveled)
+        console.log(traveled, destList)
         document.getElementById("trip-distance").innerHTML = traveled + " km"
     }
-
 }
-
-function tripCalc(){
-    alert("A trip Has been Calculated. The Total distance is: " + traveled + " Km");
-}
-
 
 /*Fuel Calculation Code*/
     function fuelCost_click(){
