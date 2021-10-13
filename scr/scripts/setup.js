@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     //When the document is loaded the listeneners are set up
-    //And loads the reset UI code
         setUpListeners();
-        resetUI();
     })
     
     // adds the event listeners that are required for the webpage to run all the required JavaScript Functions   
@@ -27,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("trip-distance").innerHTML = ""
         destList = []
         document.getElementById("fuel-dist").setAttribute('value', '0')
+        window.location.reload()
     }
 
     //Shortcut function for getElementById

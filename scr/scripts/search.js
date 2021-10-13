@@ -1,3 +1,4 @@
+//Town list for search dropdown
 const town = {
 	"1":["Alexandra","town","mountains"],
 	"2":["Blenheim","town","ocean"],
@@ -27,6 +28,7 @@ const town = {
 	"26":["Westport","town","ocean"]
 }
 
+//Function which gets the input of the search bar and presents a drop down of valid locations based off of the seach.
 function searchTOWN(elem) {
 	let selector = document.getElementById("selector");
 	// Checks if search bar is empty
