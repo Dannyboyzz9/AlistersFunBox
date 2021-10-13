@@ -1,12 +1,23 @@
-//Function which adds destinations to the List
+//Sets destList as an array, this array will be used for trip calculation
+let destList = []
+
+//Global Values used for addition and removal of destination on the list.
+j = 0
+selectedDestValue = 0
+removedDest = []
+
+//Function which adds destinations to the List and to the calculation array
 function addDest(destAdded) {
-	let newDest = document.createElement("LI")
+	let newDest = document.createElement("li")
 	let newDestText = document.createTextNode(destAdded)
+    let newDestValue = document.createAttribute("value")
+    newDestValue.value = j
+    newDest.setAttributeNode(newDestValue)
 	newDest.appendChild(newDestText)
 	document.getElementById("destination-list").appendChild(newDest)
-
     destList.push(destAdded)
     finalDest(destAdded)	
+    j+=1
 }
 
 // Function to remove a destination from the list.
@@ -14,10 +25,13 @@ function removeDest(destinationRemove) {
 	if (destinationRemove != null) {
 		destinationRemove.parentNode.removeChild(destinationRemove)
 	}
-    
+    removedDest = destList.splice(selectedDestValue, 1)
+    removedDest = []
+    destDistCalc() //Updates the trip distance
+    j-=1
 }
 
-//function adds the finishing location for the trip (ie the starting location)
+//function adds the finishing location for the trip (ie the starting location) 
 function finalDest(destAdded) {
     let startingLoc = destList[0]
     destList.pop()
@@ -37,11 +51,12 @@ function selectDest(selectDest) {
 	// Select the current one - how it shows is set in CSS
 	selectDest.id = "selectDest"
 	selectDest.classList.add("selected")
+    selectedDestValue = selectDest.value
 }
 
-//This function exits the application
+//This function exits the application, ie resets the UI and displaces a message saying you can exit and quit the tab
 function exit(){
-    alert("You have exited Well Done :)")
+    alert("You have exited the program, you can now close the tab or window")
     resetUI()
 }
 
@@ -53,8 +68,10 @@ function saveTrip(){
 
 //Function which retreves the trip list array from local storage
 function loadTrip(){
+    //Gets the saved array from local storage
     storedTrip = localStorage.getItem("trip")
     tripPlaces = JSON.parse(storedTrip)
+    //Converts the array from local storage into the destList for calculating the distance and for making the list visable
     const tripList = tripPlaces
     let tripLength = tripList.length
     i=0
@@ -66,14 +83,15 @@ function loadTrip(){
 	    newDest.appendChild(newDestText)
 	    document.getElementById("destination-list").appendChild(newDest)
         console.log(i,destAdded,destList)
-        i=i+1
-        destDistCalc()
+        destDistCalc() //Updates the trip distance
+        i+=1
     }   
 }
 
-//Distance Calculation and trip info Code:
+//Array of all the town locations
 let townList = ["Alexandra","Blenheim","Christchurch","Collingwood","Cromwell","Dunedin","Franz Josef","Geraldine","Gore","Greymouth","Haast","Invercargill","Kaikoura","Lake Tekapo","Milford Sound","Mount Cook","Murchison","Nelson","Oamaru","Picton","Queenstown","Te Anau","Timaru","Twizel","Wanaka","Westport"]
 
+//Array of all the distances between the towns
 let townDistance = [
     [0,786,755,964,31,190,373,315,136,661,231,202,657,227,370,242,734,865,223,791,93,249,307,169,86,761],
     [786,0,308,251,733,670,486,446,821,324,643,887,129,534,1081,639,153,116,555,28,794,960,471,592,745,254],
@@ -103,9 +121,6 @@ let townDistance = [
     [761,254,333,320,639,695,277,432,804,101,437,869,340,559,951,664,101,226,580,288,664,830,497,617,558,0]
 ]
 
-let destList = []
-
-
 //The following Function is the distance Calculation Code
 function destDistCalc() {
     i = 0
@@ -119,6 +134,7 @@ function destDistCalc() {
         console.log(traveled, destList)
         document.getElementById("trip-distance").innerHTML = traveled + " km"
     }
+    //Automatically sets the distance travelled in the fuel calculator to the already calculated itenary distance
     document.getElementById("fuel-dist").setAttribute('value', traveled)
 }
 
