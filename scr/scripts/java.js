@@ -56,8 +56,7 @@ function selectDest(selectDest) {
 
 //This function exits the application, ie resets the UI and displaces a message saying you can exit and quit the tab
 function exit(){
-    alert("You have exited the program, you can now close the tab or window")
-    resetUI()
+    window.close()
 }
 
 //Function which saves trip list array to local storage
