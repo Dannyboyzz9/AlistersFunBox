@@ -81,7 +81,6 @@ function loadTrip(){
 	    let newDestText = document.createTextNode(destAdded)
 	    newDest.appendChild(newDestText)
 	    document.getElementById("destination-list").appendChild(newDest)
-        console.log(i,destAdded,destList)
         destDistCalc() //Updates the trip distance
         i+=1
     }   
@@ -130,7 +129,6 @@ function destDistCalc() {
         distance = townDistance[Number(destA)]
         traveled += distance[Number(destB)]
         i+=1
-        console.log(traveled, destList)
         document.getElementById("trip-distance").innerHTML = traveled + " km"
     }
     //Automatically sets the distance travelled in the fuel calculator to the already calculated itenary distance

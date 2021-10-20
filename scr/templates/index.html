@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-		Website:	Trip planner	
-		Page:		Homepage.html
-		Author:		Daniel Smith
-		Date:		8 August 2021
--->
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +8,6 @@
 	<script src="../scripts/java.js"></script>
 	<script src="../scripts/search.js"></script>
 	<script src="../scripts/setup.js"></script>
-	<!--Jasmine Testing Files-->
-	<script src="lib/jasmine-3.9.0/jasmine.js"></script>
-  	<script src="lib/jasmine-3.9.0/jasmine-html.js"></script>
-  	<script src="lib/jasmine-3.9.0/boot0.js"></script>
-  	<script src="lib/jasmine-3.9.0/boot1.js"></script>
 
 	<link rel="stylesheet" href="../static/css/styling.css"/>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
@@ -37,13 +26,9 @@
 		<div id="interface-area"> 
 			<!--Destination search container-->
 			<div id="search-background">
-				<!--Search Bar that gives an dropdown list of chooseable destinations-->
 				<input id="search" autocomplete="off">
-				<!--Button which adds searched destination to literniary-->
 				<button id="add-button">Add To List</button>
 			</div>
-
-			
 
 			<!--Itenary list container-->
 			<div id="trip-interface">
@@ -54,6 +39,7 @@
 					</div>
 			</div>
 
+			<!--Trip controls-->
 			<div id="trip-controls">
 				<div id="control-container"> <!--Creates new container for the Trip Controls-->
 					<div class="control-row"> <!--Row for save and calc trip buttons-->
@@ -70,15 +56,10 @@
 						</div>
 					</div>
 				</div>
-				
-				
-				<!--
-					1.Save Button (as json)
-					2.Calculate Trip Button, Opens field with trip info + map with locations + trip alersts.
-					3.Auto calculating: Total Distance, Driving Time and no of destinations fields
-				-->
+
 			</div>
-			<div id="fuel-calc">
+			<!--Fuel Calculation Code-->
+			<div id="fuel-calc"> 
 					<p><label for="fuel-econ">Fuel Economy:</label><input id="fuel-econ" type="number" value="9.50"></p>
 					<p><label for="fuel-type">Fuel Type:</label>
 						<select id="fuel-type" name="fuel-type">
@@ -91,13 +72,6 @@
 					<p><label for="fuel-dist">Distance Travelled:</label><input id="fuel-dist" type="number" value="0"></p>
 				<button id="calc-button">FIND YOUR COST</button>
 				<p>Fuel Cost:</p><p id="fuel-result"></p>
-
-
-				<!--
-					1. Fuel Type dropdown menu
-					2. Fuel Economy Input field
-					3. Calculate Fuel Cost (Given Distance from Trip Controls)
-				-->
 			</div>
 			.
 		</div> 
