@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     //When the document is loaded the listeneners are set up
-        setUpListeners();
+        setUpListeners()
     })
     
     // adds the event listeners that are required for the webpage to run all the required JavaScript Functions   
