@@ -1,10 +1,9 @@
-//Sets destList as an array, this array will be used for trip calculation
-let destList = []
-
 //Global Values used for addition and removal of destination on the list.
+destList = []
 j = 0
 selectedDestValue = 0
 removedDest = []
+pain = []
 
 //Function which adds destinations to the List and to the calculation array
 function addDest(destAdded) {
@@ -38,6 +37,7 @@ function finalDest(destAdded) {
     destList.pop()
     destList.push(destAdded)
     destList.push(startingLoc)
+    document.getElementById("final-location").innerHTML = startingLoc
 }
 
 //Function which selects a list item and sets css to indicate that it has been selected
@@ -54,7 +54,7 @@ function selectDest(selectDest) {
     selectedDestValue = selectDest.value
 }
 
-//This function exits the application, ie resets the UI and displaces a message saying you can exit and quit the tab
+//This function closes the tab
 function exit(){
     window.close()
 }
@@ -70,11 +70,12 @@ function loadTrip(){
     //Gets the saved array from local storage
     storedTrip = localStorage.getItem("trip")
     tripPlaces = JSON.parse(storedTrip)
+    console.log(tripPlaces)
     //Converts the array from local storage into the destList for calculating the distance and for making the list visable
     const tripList = tripPlaces
     let tripLength = tripList.length
     i=0
-    while (tripLength > i) {    
+    while (tripLength-1 > i) {    
         let destAdded = tripList[i]
         destList.push(destAdded) 
         let newDest = document.createElement("LI")
@@ -83,7 +84,8 @@ function loadTrip(){
 	    document.getElementById("destination-list").appendChild(newDest)
         destDistCalc() //Updates the trip distance
         i+=1
-    }   
+    }  
+    destList.push(tripList[tripLength]) 
 }
 
 //Array of all the town locations
