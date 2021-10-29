@@ -1,33 +1,27 @@
 //Global Values used for addition and removal of destination on the list.
 destList = []
-j = 0
-selectedDestValue = 0
-removedDest = []
-pain = []
 
 //Function which adds destinations to the List and to the calculation array
 function addDest(destAdded) {
 	let newDest = document.createElement("li")
 	let newDestText = document.createTextNode(destAdded)
-    let newDestValue = document.createAttribute("value")
-    newDestValue.value = j
-    newDest.setAttributeNode(newDestValue)
 	newDest.appendChild(newDestText)
 	document.getElementById("destination-list").appendChild(newDest)
     destList.push(destAdded)
     finalDest(destAdded)	
-    j+=1
+    console.log(destList)
 }
 
 // Function to remove a destination from the list.
 function removeDest(destinationRemove) {
 	if (destinationRemove != null) {
+        listItmToRmov = getElement("selectDest")
+        index = [].indexOf.call(listItmToRmov.parentNode.children, listItmToRmov)
 		destinationRemove.parentNode.removeChild(destinationRemove)
+        destList.splice(index, 1)
 	}
-    removedDest = destList.splice(selectedDestValue, 1)
-    removedDest = []
     destDistCalc() //Updates the trip distance
-    j-=1
+    console.log(destList)
 }
 
 //function adds the finishing location for the trip (ie the starting location) 
@@ -38,6 +32,7 @@ function finalDest(destAdded) {
     destList.push(destAdded)
     destList.push(startingLoc)
     document.getElementById("final-location").innerHTML = startingLoc
+    console.log(destList)
 }
 
 //Function which selects a list item and sets css to indicate that it has been selected
@@ -51,7 +46,7 @@ function selectDest(selectDest) {
 	// Select the current one - how it shows is set in CSS
 	selectDest.id = "selectDest"
 	selectDest.classList.add("selected")
-    selectedDestValue = selectDest.value
+    console.log(destList)
 }
 
 //This function closes the tab
@@ -62,7 +57,7 @@ function exit(){
 //Function which saves trip list array to local storage
 function saveTrip(){
     destListString=JSON.stringify(destList)
-    localStorage.setItem("trip", destListString)
+    localStorage.setItem("trip", destListString)   
 }
 
 //Function which retreves the trip list array from local storage

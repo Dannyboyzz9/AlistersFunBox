@@ -1,60 +1,26 @@
-// the test below passes as teh function is correct
-describe("Find furthest apart correct", function() {
-	beforeEach(function() {
-		loadDataManually()
+//Testing for Correct Distance Calculation
+describe("Distance Calculations", function(){
+	beforeEach(function(){
+		manualDataLoad()
 	})
-	
-	it("should find teh furthest apart given teh actual data", function() {
-		// run a function with the "proper" data
-		furthestApart = findFurthestApart()
-		expect(furthestApart[0]).toEqual(3)
-		expect(furthestApart[1]).toEqual(14)
-		expect(furthestApart[2]).toEqual(1232)
+	//Runs tests on distance calculations to check whether the right outputs are being delievered
+	it("Testing for Correct Distance Calculations", function(){
+		expect(townDistance[5][8]+townDistance[8][5]).toEqual(302)
+		expect(townDistance[5][8]+townDistance[8][5]+townDistance[9][21]+townDistance[8][5]).toEqual(1192)
+		expect(townDistance[9][21]+townDistance[24][5]+townDistance[9][21]+townDistance[9][21]+townDistance[21][21]+townDistance[9][21]).toEqual(3232)
+		expect(townDistance[4][4]+townDistance[10][2]+townDistance[4][4]+townDistance[10][23]+townDistance[4][4]).toEqual(820)
 	})
-	
-	it("should find teh furthest apart for modified data", function() {
-		// run a function with modified data fro boundary conditions
-		distancesBetweenTowns[0][1] = 9999
-		furthestApart = findFurthestApart()
-		expect(furthestApart[0]).toEqual(0)
-		expect(furthestApart[1]).toEqual(1)
-		expect(furthestApart[2]).toEqual(9999)
-		
-		distancesBetweenTowns[25][24] = 99999
-		furthestApart = findFurthestApart()
-		expect(furthestApart[0]).toEqual(25)
-		expect(furthestApart[1]).toEqual(24)
-		expect(furthestApart[2]).toEqual(99999)
-	})	
-})
 
-// the test below fails as teh function is incorrect
-describe("Find remotest correct", function() {
-	// Emulate teh data loading
-	beforeEach(function() {
-		// Load some dummy data
-		townList = ["A","B","C","D"]
-		distancesBetweenTowns=[
-		[0,1,3,5],[1,0,8,4],[3,8,0,1],[5,4,1,0]];
+	//Runs tests for correct distance calculations for when a town is loaded more than once
+	it("Testing for correct distance for towns loaded more than twice", function(){
+		expect(townDistance[5][8]+townDistance[8][5]+townDistance[9][21]+townDistance[8][5]).toEqual(1192)
+		expect(townDistance[9][21]+townDistance[24][5]+townDistance[9][21]+townDistance[9][21]+townDistance[21][21]+townDistance[9][21]).toEqual(3232)
+		expect(townDistance[18][8]+townDistance[18][8]+townDistance[18][8]).toEqual(798)
+		expect(townDistance[4][4]+townDistance[10][2]+townDistance[4][4]+townDistance[10][23]+townDistance[4][4]).toEqual(820)
 	})
-	
-	it("should find teh remotest when it is in teh middle", function() {
-		remotest = findRemotest()
-		expect(remotest[0]).toEqual(1)
-		expect(remotest[1]).toEqual(13)
-	})
-	
-	it("should find teh remotest when it is the first", function() {
-		distancesBetweenTowns[0][3] = 999
-		remotest = findRemotest()
-		expect(remotest[0]).toEqual(0)
-		expect(remotest[1]).toEqual(1003)
-	})
-	
-	it("should find teh remotest when it is the last", function() {
-		distancesBetweenTowns[3][0] = 999
-		remotest = findRemotest()
-		expect(remotest[0]).toEqual(3)
-		expect(remotest[1]).toEqual(1004)
-	})
+
 })
+	
+//Fuel Calculation TEsts
+
+	//Test for correct calculations 
