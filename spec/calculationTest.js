@@ -5,22 +5,67 @@ describe("Distance Calculations", function(){
 	})
 	//Runs tests on distance calculations to check whether the right outputs are being delievered
 	it("Testing for Correct Distance Calculations", function(){
-		expect(townDistance[5][8]+townDistance[8][5]).toEqual(302)
-		expect(townDistance[5][8]+townDistance[8][5]+townDistance[9][21]+townDistance[8][5]).toEqual(1192)
-		expect(townDistance[9][21]+townDistance[24][5]+townDistance[9][21]+townDistance[9][21]+townDistance[21][21]+townDistance[9][21]).toEqual(3232)
-		expect(townDistance[4][4]+townDistance[10][2]+townDistance[4][4]+townDistance[10][23]+townDistance[4][4]).toEqual(820)
+		destList = ['Queenstown','Christchurch','Wanaka','Timaru','Queenstown'] //dummy data
+		destCalc = destDistCalc()
+		expect(destCalc).toEqual(3517)
 	})
 
 	//Runs tests for correct distance calculations for when a town is loaded more than once
 	it("Testing for correct distance for towns loaded more than twice", function(){
-		expect(townDistance[5][8]+townDistance[8][5]+townDistance[9][21]+townDistance[8][5]).toEqual(1192)
-		expect(townDistance[9][21]+townDistance[24][5]+townDistance[9][21]+townDistance[9][21]+townDistance[21][21]+townDistance[9][21]).toEqual(3232)
-		expect(townDistance[18][8]+townDistance[18][8]+townDistance[18][8]).toEqual(798)
-		expect(townDistance[4][4]+townDistance[10][2]+townDistance[4][4]+townDistance[10][23]+townDistance[4][4]).toEqual(820)
+		destList = ['Queenstown','Christchurch','Wanaka','Timaru','Wanaka','Christchurch','Queenstown'] //dummy data
+		destCalc = destDistCalc()
+		expect(destCalc).toEqual(7456)
 	})
 
 })
 	
 //Fuel Calculation TEsts
+describe("Fuel Calculations", function(){
+	//Testing the correct calculations for each type of fuel (keeping the fuel econ constant)
+	it("Correct Calculation for 91", function(){
+		fuelCalc = fuelCostCalc()
+		fuelType = 1 //2.3
+		econ = 10
+		dist = 10
+		expect(fuelCalc).toEqual(2.3)
+	})
 
-	//Test for correct calculations 
+	it("Correct Calculation for 95/96", function(){
+		fuelCalc = fuelCostCalc()
+		fuelType = 2 //2.5
+		econ = 10
+		dist = 20
+		expect(fuelCalc).toEqual(5)
+	})
+
+	it("Correct Calculation for Diesel", function(){
+		fuelCalc = fuelCostCalc()
+		fuelType = 3 //1.5
+		econ = 10
+		dist = 30
+		expect(fuelCalc).toEqual(4.5)
+	})
+
+	//Testing for correct calculations for different fuel econ (keeping the fuel type constant)
+	it("Correct Calculation for 7.5L/100km", function(){
+		fuelCalc = fuelCostCalc()
+		fuelType = 1 
+		econ = 7.5
+		dist = 100
+		expect(fuelCalc).toEqual(17.5)
+	})
+	it("Correct Calculation for 6.66L/100km", function(){
+		fuelCalc = fuelCostCalc()
+		fuelType = 1 
+		econ = 6
+		dist = 250
+		expect(fuelCalc).toEqual(34.5)
+	})
+	it("Correct Calculation for 12.5L/100km", function(){
+		fuelCalc = fuelCostCalc()
+		fuelType = 1 
+		econ = 12.5
+		dist = 100
+		expect(fuelCalc).toEqual(28.75)
+	})
+})

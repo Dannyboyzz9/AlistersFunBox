@@ -21,15 +21,40 @@ describe("Distance Calculations", function(){
 		expect(townDistance[25][0]).toEqual(761)
 		expect(townDistance[25][25]).toEqual(0)
 	})
-	//Random Testing of 
 })
 
-//Test for correct array
-
+//Test for correct arrays
+describe("", function(){
+	beforeEach(function(){
+		manualDataLoad()
+	})
 	//When a location is removed
-
+	it("", function(){
+	
+	})
 	//Correct staring location and test for starting location being the end point of the array
+	it("", function(){
+		
+		//something to determin the length of the array then check that [0]=[n] n being the final array itm
 
-//Test for correct JSON Saving
+	})
+})
+	
+describe("JSON Testing", function(){
+	beforeEach(function(){
+		manualDataLoad()
+	})
+	//Test for correct JSON Saving
+	it("Correct JSON Array", function(){
+		destList = ['Queenstown','Christchurch','Wanaka','Timaru','Queenstown'] //dummy data
+		saveJSON = saveTrip()
+		expect(saveJSON).toEqual('["Queenstown","Christchurch","Wanaka","Timaru","Queenstown"]')	
+	})
+	//Tets for correct JSON Loading
+	it("JSON Loading", function(){
+		tripPlaces = ['Queenstown','Christchurch','Wanaka','Timaru','Queenstown']
+		loadJSON = loadTrip()
+		expect(loadJSON).toEqual('["Queenstown","Christchurch","Wanaka","Timaru","Queenstown"]')	
+	})
+})
 
-//Tets for correct JSON Loading

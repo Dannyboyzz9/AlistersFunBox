@@ -1,4 +1,4 @@
-//Global Values used for addition and removal of destination on the list.
+//Global Value used for addition and removal of destination on the list.
 destList = []
 
 //Function which adds destinations to the List and to the calculation array
@@ -9,7 +9,7 @@ function addDest(destAdded) {
 	document.getElementById("destination-list").appendChild(newDest)
     destList.push(destAdded)
     finalDest(destAdded)	
-    console.log(destList)
+    return destAdded
 }
 
 // Function to remove a destination from the list.
@@ -21,7 +21,7 @@ function removeDest(destinationRemove) {
         destList.splice(index, 1)
 	}
     destDistCalc() //Updates the trip distance
-    console.log(destList)
+    return
 }
 
 //function adds the finishing location for the trip (ie the starting location) 
@@ -56,8 +56,9 @@ function exit(){
 
 //Function which saves trip list array to local storage
 function saveTrip(){
-    destListString=JSON.stringify(destList)
-    localStorage.setItem("trip", destListString)   
+    destListString = JSON.stringify(destList)
+    localStorage.setItem("trip", destListString)
+    return destListString
 }
 
 //Function which retreves the trip list array from local storage
@@ -65,7 +66,6 @@ function loadTrip(){
     //Gets the saved array from local storage
     storedTrip = localStorage.getItem("trip")
     tripPlaces = JSON.parse(storedTrip)
-    console.log(tripPlaces)
     //Converts the array from local storage into the destList for calculating the distance and for making the list visable
     const tripList = tripPlaces
     let tripLength = tripList.length
@@ -81,6 +81,7 @@ function loadTrip(){
         i+=1
     }  
     destList.push(tripList[tripLength]) 
+    return tripList
 }
 
 //Array of all the town locations
@@ -117,52 +118,55 @@ let townDistance = [
 ]
 
 //The following Function is the distance Calculation Code
+traveled = 0
 function destDistCalc() {
     i = 0
-    traveled = 0
     while((destList.length-1) > i) {
         destA = townList.indexOf(destList[i])
         destB = townList.indexOf(destList[(i+1)])
         distance = townDistance[Number(destA)]
         traveled += distance[Number(destB)]
         i+=1
-        document.getElementById("trip-distance").innerHTML = traveled + " km"
     }
-    //Automatically sets the distance travelled in the fuel calculator to the already calculated itenary distance
+    return traveled
+}
+
+//Updates the HTML fields to display distance
+function distCalcInfo(){
+    document.getElementById("trip-distance").innerHTML = traveled + " km"
     document.getElementById("fuel-dist").setAttribute('value', traveled)
 }
 
 /*Fuel Calculation Code*/
-    function fuelCost_click(){
-        /*Gets fuel economy info from webpage */
-        let econ = document.getElementById("fuel-econ").value
-        /*Gets distance travelled info from the webpage */
-        let dist = document.getElementById("fuel-dist").value
-       
-        /*If, else if, else stament to set fuel price depending on what fuel type is selected*/
-        let fuelType = document.getElementById("fuel-type").value
-        console.log(fuelType)
+function fuelCalcVar(){
+    econ = document.getElementById("fuel-econ").value
+    dist = document.getElementById("fuel-dist").value
+    fuelType = document.getElementById("fuel-type").value
+}
 
-        /*Sets the value of the varible 'price' to 0 */
+price = 0
+dist = 0
+fuelType = 1
+econ = 0
+function fuelCostCalc(){
+    if (fuelType == 1){
+        /*If the fuelType value is = 1 (petrol-91) the price varible is equal to '2.309' */
+         var price = 2.3
+    } else if (fuelType == 2) {
+        /*If the fuelType value is = 1 (petrol-95/96) the price varible is equal to '2.497' */
+        var price = 2.5
+    } else if (fuelType == 3) {
+         /*If the fuelType value is = 3 (Diesel) the price varible is equal to '1.499' */
+        var price = 1.5
+    } else {
         var price = 0
-
-        /*If statment determining what the price value should be given a fuel type*/
-        if (fuelType == 1){
-            /*If the fuelType value is = 1 (petrol-91) the price varible is equal to '2.309' */
-            var price = 2.309
-        } else if (fuelType == 2) {
-             /*If the fuelType value is = 1 (petrol-95/96) the price varible is equal to '2.497' */
-            var price = 2.497
-        } else if (fuelType == 3) {
-             /*If the fuelType value is = 3 (Diesel) the price varible is equal to '1.499' */
-            var price = 1.499
-        } else {
-            var price = 0
-        }
-
-        /*Total Fuel cost calculation Code*/
-        let cost = ((dist/100) * econ) * price
-
-        /*Outputs the fuel cost to the HTML*/
-        document.getElementById("fuel-result").innerHTML = cost
     }
+    /*Total Fuel cost calculation Code*/
+    cost = ((dist/100) * econ) * price
+    return cost
+}
+
+function fuelCalcInfo(){
+    /*Outputs the fuel cost to the HTML*/
+    document.getElementById("fuel-result").innerHTML = cost
+}
