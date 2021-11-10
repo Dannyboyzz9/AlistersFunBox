@@ -1,5 +1,5 @@
 //Global Value used for addition and removal of destination on the list.
-destList = []
+let destList = []
 
 //Function which adds destinations to the List and to the calculation array
 function addDest(destAdded) {
@@ -13,15 +13,16 @@ function addDest(destAdded) {
 }
 
 // Function to remove a destination from the list.
-function removeDest(destinationRemove) {
+function removeDest() {
+    let destinationRemove = getElement("selectDest")
 	if (destinationRemove != null) {
-        listItmToRmov = getElement("selectDest")
-        index = [].indexOf.call(listItmToRmov.parentNode.children, listItmToRmov)
+        listItemToRemove = getElement("selectDest")
+        index = [].indexOf.call(listItemToRemove.parentNode.children, listItemToRemove)
 		destinationRemove.parentNode.removeChild(destinationRemove)
         destList.splice(index, 1)
 	}
     destDistCalc() //Updates the trip distance
-    return
+    return destList
 }
 
 //function adds the finishing location for the trip (ie the starting location) 
@@ -32,7 +33,6 @@ function finalDest(destAdded) {
     destList.push(destAdded)
     destList.push(startingLoc)
     document.getElementById("final-location").innerHTML = startingLoc
-    console.log(destList)
 }
 
 //Function which selects a list item and sets css to indicate that it has been selected
@@ -46,7 +46,6 @@ function selectDest(selectDest) {
 	// Select the current one - how it shows is set in CSS
 	selectDest.id = "selectDest"
 	selectDest.classList.add("selected")
-    console.log(destList)
 }
 
 //This function closes the tab
@@ -62,13 +61,14 @@ function saveTrip(){
 }
 
 //Function which retreves the trip list array from local storage
+//This code was refactored to allow for the function to correctly upload the infomation to the webpage to allow for changes and calculation.
 function loadTrip(){
     //Gets the saved array from local storage
     storedTrip = localStorage.getItem("trip")
     tripPlaces = JSON.parse(storedTrip)
     //Converts the array from local storage into the destList for calculating the distance and for making the list visable
     const tripList = tripPlaces
-    let tripLength = tripList.length
+    const tripLength = tripList.length
     i=0
     while (tripLength-1 > i) {    
         let destAdded = tripList[i]
@@ -85,10 +85,10 @@ function loadTrip(){
 }
 
 //Array of all the town locations
-let townList = ["Alexandra","Blenheim","Christchurch","Collingwood","Cromwell","Dunedin","Franz Josef","Geraldine","Gore","Greymouth","Haast","Invercargill","Kaikoura","Lake Tekapo","Milford Sound","Mount Cook","Murchison","Nelson","Oamaru","Picton","Queenstown","Te Anau","Timaru","Twizel","Wanaka","Westport"]
+const townList = ["Alexandra","Blenheim","Christchurch","Collingwood","Cromwell","Dunedin","Franz Josef","Geraldine","Gore","Greymouth","Haast","Invercargill","Kaikoura","Lake Tekapo","Milford Sound","Mount Cook","Murchison","Nelson","Oamaru","Picton","Queenstown","Te Anau","Timaru","Twizel","Wanaka","Westport"]
 
 //Array of all the distances between the towns
-let townDistance = [
+const townDistance = [
     [0,786,755,964,31,190,373,315,136,661,231,202,657,227,370,242,734,865,223,791,93,249,307,169,86,761],
     [786,0,308,251,733,670,486,446,821,324,643,887,129,534,1081,639,153,116,555,28,794,960,471,592,745,254],
     [755,308,0,509,410,362,395,138,513,258,535,579,183,226,773,331,292,424,247,336,486,652,163,284,424,333],
@@ -118,15 +118,19 @@ let townDistance = [
 ]
 
 //The following Function is the distance Calculation Code
-traveled = 0
+//This code was refactored to allow the code to be more felixable in it use and to better be suited for jasmine testing 
+//Note, Jasmine code showed that the original code was incorrect and was providing a incorect value this meant the code required refactoring to fix this issue
+var traveled 
 function destDistCalc() {
     i = 0
+    traveled = 0
     while((destList.length-1) > i) {
         destA = townList.indexOf(destList[i])
         destB = townList.indexOf(destList[(i+1)])
         distance = townDistance[Number(destA)]
         traveled += distance[Number(destB)]
         i+=1
+        console.log(traveled)
     }
     return traveled
 }
@@ -137,17 +141,15 @@ function distCalcInfo(){
     document.getElementById("fuel-dist").setAttribute('value', traveled)
 }
 
-/*Fuel Calculation Code*/
+//The following 3 functions were refactored from one function to allow for better felxablity in the code
+/*Grabs infomation for Fuel Calculation from html*/
 function fuelCalcVar(){
     econ = document.getElementById("fuel-econ").value
     dist = document.getElementById("fuel-dist").value
     fuelType = document.getElementById("fuel-type").value
 }
 
-price = 0
-dist = 0
-fuelType = 1
-econ = 0
+//Fuel Calculation Code
 function fuelCostCalc(){
     if (fuelType == 1){
         /*If the fuelType value is = 1 (petrol-91) the price varible is equal to '2.309' */

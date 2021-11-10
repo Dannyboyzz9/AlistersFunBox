@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("add-button").addEventListener('click',function() {addDest(getElement("search").value);destDistCalc();distCalcInfo();});
         document.getElementById("search").addEventListener('keyup',function() {searchTOWN(this);});
         document.getElementById("destination-list").addEventListener('click',function(event) {selectDest(event.target)});
-        document.getElementById("remove-button").addEventListener('click',function() {removeDest(getElement("selectDest"));});
+        document.getElementById("remove-button").addEventListener('click',function() {removeDest();});
         document.getElementById("calc-button").addEventListener('click',function() {fuelCalcVar();fuelCostCalc();fuelCalcInfo();});
     }
 
