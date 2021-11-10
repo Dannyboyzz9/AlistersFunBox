@@ -16,8 +16,8 @@ function addDest(destAdded) {
 function removeDest() {
     let destinationRemove = getElement("selectDest")
 	if (destinationRemove != null) {
-        listItemToRemove = getElement("selectDest")
-        index = [].indexOf.call(listItemToRemove.parentNode.children, listItemToRemove)
+        let listItemToRemove = getElement("selectDest")
+        let index = [].indexOf.call(listItemToRemove.parentNode.children, listItemToRemove)
 		destinationRemove.parentNode.removeChild(destinationRemove)
         destList.splice(index, 1)
 	}
@@ -37,7 +37,7 @@ function finalDest(destAdded) {
 
 //Function which selects a list item and sets css to indicate that it has been selected
 function selectDest(selectDest) {
-    currentSelected = document.getElementById("selectDest")
+    let currentSelected = document.getElementById("selectDest")
 	// Unselect previous selection
     if (currentSelected != null) {
 		currentSelected.id = ""
@@ -55,7 +55,7 @@ function exit(){
 
 //Function which saves trip list array to local storage
 function saveTrip(){
-    destListString = JSON.stringify(destList)
+    let destListString = JSON.stringify(destList)
     localStorage.setItem("trip", destListString)
     return destListString
 }
@@ -64,8 +64,8 @@ function saveTrip(){
 //This code was refactored to allow for the function to correctly upload the infomation to the webpage to allow for changes and calculation.
 function loadTrip(){
     //Gets the saved array from local storage
-    storedTrip = localStorage.getItem("trip")
-    tripPlaces = JSON.parse(storedTrip)
+    let storedTrip = localStorage.getItem("trip")
+    let tripPlaces = JSON.parse(storedTrip)
     //Converts the array from local storage into the destList for calculating the distance and for making the list visable
     const tripList = tripPlaces
     const tripLength = tripList.length
@@ -164,7 +164,7 @@ function fuelCostCalc(){
         var price = 0
     }
     /*Total Fuel cost calculation Code*/
-    cost = ((dist/100) * econ) * price
+    let cost = ((dist/100) * econ) * price
     return cost
 }
 
