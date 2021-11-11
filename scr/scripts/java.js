@@ -168,6 +168,7 @@ function fuelCostCalc(){
     return cost
 }
 
+//Updates the fuel calculation cost
 function fuelCalcInfo(){
     /*Outputs the fuel cost to the HTML*/
     document.getElementById("fuel-result").innerHTML = cost
