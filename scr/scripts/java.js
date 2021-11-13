@@ -130,7 +130,6 @@ function destDistCalc() {
         distance = townDistance[Number(destA)]
         traveled += distance[Number(destB)]
         i+=1
-        console.log(traveled)
     }
     return traveled
 }
