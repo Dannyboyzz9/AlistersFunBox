@@ -165,11 +165,6 @@ function fuelCostCalc(){
     }
     /*Total Fuel cost calculation Code*/
     let cost = ((dist/100) * econ) * price
-    return cost
-}
-
-//Updates the fuel calculation cost
-function fuelCalcInfo(){
-    /*Outputs the fuel cost to the HTML*/
     document.getElementById("fuel-result").innerHTML = cost
+    return cost
 }

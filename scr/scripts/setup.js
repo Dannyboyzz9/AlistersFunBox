@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("search").addEventListener('keyup',function() {searchTOWN(this);});
         document.getElementById("destination-list").addEventListener('click',function(event) {selectDest(event.target)});
         document.getElementById("remove-button").addEventListener('click',function() {removeDest();});
-        document.getElementById("calc-button").addEventListener('click',function() {fuelCalcVar();fuelCostCalc();fuelCalcInfo();});
+        document.getElementById("calc-button").addEventListener('click',function() {fuelCalcVar();fuelCostCalc();});
     }
 
     //Function which resets all the input fields and background arrays and varibles 
